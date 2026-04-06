@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartMatch — Product Proposal | Cognitive Talent Solutions</title>
+  <style>
+    :root {
+      --brand-primary: #1a3c6e;
+      --brand-accent: #0077cc;
+      --brand-light: #e8f0fb;
+      --brand-green: #1e7d5a;
+      --brand-green-light: #e6f4ef;
+      --text-dark: #1a1a2e;
+      --text-mid: #444;
+      --text-light: #666;
+      --border: #dde3ed;
+      --bg: #f7f9fc;
+      --white: #ffffff;
+      --radius: 10px;
+      --shadow: 0 2px 16px rgba(26,60,110,0.09);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, #0d2a52 100%);
+      color: white;
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    header h1 span { color: #5bb8ff; }
+    header .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .meta-pills {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .meta-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.82rem;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Section ── */
+    section {
+      margin-bottom: 52px;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--brand-primary);
+      margin: 28px 0 10px;
+    }
+    p { color: var(--text-mid); margin-bottom: 14px; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .card.accent-blue { border-left: 4px solid var(--brand-accent); }
+    .card.accent-green { border-left: 4px solid var(--brand-green); }
+
+    /* ── Executive Summary ── */
+    .exec-summary {
+      background: var(--brand-light);
+      border: 1px solid #c0d4f0;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      font-size: 1.05rem;
+      color: var(--brand-primary);
+      line-height: 1.75;
+    }
+    .exec-summary strong { color: var(--brand-accent); }
+
+    /* ── Problem Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    thead tr {
+      background: var(--brand-primary);
+      color: white;
+    }
+    thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td {
+      padding: 14px 18px;
+      color: var(--text-mid);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) td { background: #f9fafb; }
+    td:first-child { font-weight: 600; color: var(--text-dark); width: 22%; }
+
+    /* ── Module cards ── */
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .module-badge {
+      background: var(--brand-primary);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .module-badge.green { background: var(--brand-green); }
+    .module-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+    }
+
+    /* ── Score formula ── */
+    .formula-box {
+      background: #f0f4ff;
+      border: 1px solid #c8d8f8;
+      border-radius: 8px;
+      padding: 18px 22px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.93rem;
+      color: #1a3c6e;
+      line-height: 1.8;
+      margin: 16px 0;
+    }
+
+    /* ── Workflow steps ── */
+    .steps { list-style: none; padding: 0; margin: 10px 0; }
+    .steps li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: var(--brand-accent);
+      color: white;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-num.green { background: var(--brand-green); }
+    .steps li p { margin: 0; color: var(--text-mid); font-size: 0.95rem; }
+
+    /* ── Architecture diagram ── */
+    .arch-diagram {
+      background: #0d1117;
+      color: #c9d1d9;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    .arch-diagram .highlight { color: #79c0ff; }
+    .arch-diagram .highlight2 { color: #56d364; }
+    .arch-diagram .highlight3 { color: #ffa657; }
+
+    /* ── Tags / pills ── */
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag {
+      background: var(--brand-light);
+      color: var(--brand-primary);
+      border: 1px solid #c0d4f0;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .tag.green {
+      background: var(--brand-green-light);
+      color: var(--brand-green);
+      border-color: #b0ddc9;
+    }
+
+    /* ── Metrics grid ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .metric-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .metric-card .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--brand-accent);
+      line-height: 1;
+    }
+    .metric-card .metric-val.green { color: var(--brand-green); }
+    .metric-card .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 6px;
+    }
+
+    /* ── Phase timeline ── */
+    .phases { display: flex; flex-direction: column; gap: 0; }
+    .phase-row {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+    }
+    .phase-num {
+      background: var(--brand-primary);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      padding: 16px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px 0 0 8px;
+      min-width: 38px;
+      letter-spacing: 0.1em;
+    }
+    .phase-num.green { background: var(--brand-green); }
+    .phase-body {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 22px;
+      flex: 1;
+      margin-bottom: 10px;
+    }
+    .phase-body h4 { font-size: 0.97rem; color: var(--brand-primary); margin-bottom: 4px; }
+    .phase-body .phase-time {
+      font-size: 0.78rem;
+      color: var(--brand-accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .phase-body p { font-size: 0.88rem; margin: 0; color: var(--text-mid); }
+
+    /* ── Next steps ── */
+    .next-steps { list-style: none; padding: 0; }
+    .next-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .next-steps li:last-child { border-bottom: none; }
+    .next-steps .ns-icon {
+      font-size: 1.2rem;
+      min-width: 26px;
+    }
+    .next-steps p { margin: 0; color: var(--text-mid); font-size: 0.95rem; }
+    .next-steps strong { color: var(--text-dark); }
+
+    /* ── Positioning box ── */
+    .positioning {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, #0d2a52 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      text-align: center;
+    }
+    .positioning h3 { color: white; font-size: 1.3rem; margin: 0 0 12px; }
+    .positioning p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; }
+    .positioning .arrow {
+      font-size: 2rem;
+      margin: 16px 0;
+      opacity: 0.6;
+    }
+    .positioning .from-to {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .from-to .label {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .from-to .arrow-icon { font-size: 1.4rem; opacity: 0.7; }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Product Proposal · Cognitive Talent Solutions</div>
+  <h1><span>SmartMatch</span> — AI-Powered Mentor &amp;<br/>Cross-Team Collaboration Workflows</h1>
+  <div class="subtitle">Built on Cognitive Network Analyzer™ + ONA by CTS &amp; ServiceNow</div>
+  <div class="meta-pills">
+    <span class="meta-pill">April 5, 2026</span>
+    <span class="meta-pill">Prepared for CTS</span>
+    <span class="meta-pill">ServiceNow Integration</span>
+    <span class="meta-pill">Recommendation System</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- Executive Summary -->
+  <section>
+    <div class="section-label">Overview</div>
+    <h2>Executive Summary</h2>
+    <div class="exec-summary">
+      CTS already has a proven foundation: ONA data that maps informal organizational networks, a certified ServiceNow integration, and a patent-pending Modular AI Agent Framework. What's missing is a <strong>closed-loop, action-oriented recommendation system</strong> that takes those network insights and automatically surfaces the <em>right mentor</em> and the <em>right cross-team collaborator</em> for each employee — with HR workflows to act on those recommendations in ServiceNow without manual analysis.
+      <br/><br/>
+      This proposal outlines <strong>SmartMatch</strong>, a two-module recommendation workflow layer built on top of ONA by CTS &amp; ServiceNow — turning insight dashboards into automated HR actions.
+    </div>
+  </section>
+
+  <!-- Problem Statement -->
+  <section>
+    <div class="section-label">Problem</div>
+    <h2>What's Broken Today</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pain Point</th>
+          <th>Current State</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mentor matching is manual</td>
+          <td>HR assigns mentors based on org chart proximity or manager nominations</td>
+          <td>Poor fit, low engagement, mentees left unmatched</td>
+        </tr>
+        <tr>
+          <td>Cross-team collaboration is accidental</td>
+          <td>Employees discover cross-functional peers through hallway conversations or Slack luck</td>
+          <td>Siloed knowledge, duplicated work, missed innovation</td>
+        </tr>
+        <tr>
+          <td>ONA insights stay in dashboards</td>
+          <td>Analysts generate reports, but recommendations don't flow into HR workflows</td>
+          <td>Insight-to-action gap; data doesn't change behavior</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Module 1 -->
+  <section>
+    <div class="section-label">Module 1</div>
+    <h2>MentorMatch — Intelligent Mentor Pairing</h2>
+
+    <div class="card accent-blue">
+      <div class="module-header">
+        <span class="module-badge">Module 1</span>
+        <span class="module-title">MentorMatch</span>
+      </div>
+      <p>Automatically recommends the top 3 mentor candidates for each employee, ranked by network compatibility, skill complementarity, and availability signals — removing the manual guesswork from HR.</p>
+
+      <h3>Data Inputs (Active + Passive ONA)</h3>
+      <div class="tag-row">
+        <span class="tag">Network graph (ONA)</span>
+        <span class="tag">Skill gap signals (Growth &amp; Dev)</span>
+        <span class="tag">Collaboration frequency (passive)</span>
+        <span class="tag">Past mentorship outcomes</span>
+        <span class="tag">Meeting/email patterns</span>
+      </div>
+
+      <h3>Recommendation Scoring</h3>
+      <div class="formula-box">
+        MentorScore = α · NetworkBridgeScore<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ β · SkillComplementarityScore<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ γ · AvailabilityScore<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ δ · DiversityScore (dept, tenure, geography)
+      </div>
+      <p style="font-size:0.88rem;">Weights (α, β, γ, δ) are tunable per organization's goals — e.g., M&amp;A mode weights <strong>NetworkBridgeScore</strong> higher to break acquired-company silos.</p>
+
+      <h3>ServiceNow Workflow</h3>
+      <ol class="steps">
+        <li><span class="step-num">1</span><p>Trigger: New hire starts onboarding in <strong>Employee Journey Management</strong>, or employee enrolls in a <strong>Growth &amp; Development</strong> plan</p></li>
+        <li><span class="step-num">2</span><p>SmartMatch agent queries ONA graph → generates ranked mentor list with plain-language explanations</p></li>
+        <li><span class="step-num">3</span><p>HR receives a ServiceNow task with ranked list, a "Why this mentor?" card, and approve/swap actions</p></li>
+        <li><span class="step-num">4</span><p>Upon approval, ServiceNow auto-sends introduction messages, schedules first meeting, and creates a mentorship record</p></li>
+        <li><span class="step-num">5</span><p>Check-in nudges at 30/60/90 days with a feedback loop that retrains the model over time</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Module 2 -->
+  <section>
+    <div class="section-label">Module 2</div>
+    <h2>TeamBridge — Cross-Team Collaboration Recommendations</h2>
+
+    <div class="card accent-green">
+      <div class="module-header">
+        <span class="module-badge green">Module 2</span>
+        <span class="module-title">TeamBridge</span>
+      </div>
+      <p>Proactively surfaces employees in other teams who share relevant project contexts, complementary expertise, or are structural bridges — turning ONA's structural hole detection into actionable "People You Should Know" suggestions.</p>
+
+      <h3>Data Inputs</h3>
+      <div class="tag-row">
+        <span class="tag green">Structural hole detection (ONA)</span>
+        <span class="tag green">Project/ticket metadata (ServiceNow)</span>
+        <span class="tag green">Collaboration velocity (passive ONA)</span>
+        <span class="tag green">Employee-stated interests (Active ONA)</span>
+        <span class="tag green">Skills tags (Growth &amp; Dev)</span>
+      </div>
+
+      <h3>Two Recommendation Modes</h3>
+      <table style="margin-top:10px;">
+        <thead>
+          <tr><th>Mode</th><th>Use Case</th><th>Algorithm</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Serendipity Mode</td>
+            <td>Innovation, knowledge sharing</td>
+            <td>Collaborative filtering on project tag overlap + network distance</td>
+          </tr>
+          <tr>
+            <td>Targeted Mode</td>
+            <td>Specific skill gap or project need</td>
+            <td>Content-based filtering on skill profiles + structural hole bridging</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>ServiceNow Workflow</h3>
+      <ol class="steps">
+        <li><span class="step-num green">1</span><p>Trigger: Weekly digest, or event-driven (new project started, role change, onboarding milestone)</p></li>
+        <li><span class="step-num green">2</span><p>SmartMatch agent queries ONA graph → generates "People You Should Know" cards with context ("Alex in Engineering solved a similar problem in Q3")</p></li>
+        <li><span class="step-num green">3</span><p>Delivered via <strong>ServiceNow Employee Center</strong> as a widget or push notification</p></li>
+        <li><span class="step-num green">4</span><p>Employee can one-click request a warm intro (HR or shared manager notified), or save for later</p></li>
+        <li><span class="step-num green">5</span><p>Opt-in office hours scheduling: if recommended collaborator has flagged availability, direct calendar booking enabled</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section>
+    <div class="section-label">Technical</div>
+    <h2>Architecture</h2>
+    <div class="arch-diagram">
+<span class="highlight">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="highlight">│               ServiceNow Now Platform                        │</span>
+<span class="highlight">│  Employee Journey │ Manager Hub │ Growth &amp; Dev │ Emp. Center  │</span>
+<span class="highlight">└────────────┬──────────────────────────────────┬────────────┘</span>
+             │  Triggers &amp; Actions               │ UI Widgets
+             ▼                                   ▼
+<span class="highlight2">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="highlight2">│            SmartMatch Workflow Layer  (NEW)                  │</span>
+<span class="highlight2">│  ┌────────────────────┐    ┌───────────────────────────┐    │</span>
+<span class="highlight2">│  │    MentorMatch     │    │       TeamBridge           │    │</span>
+<span class="highlight2">│  │  Ranking Engine    │    │  Rec Engine (CF + CB)      │    │</span>
+<span class="highlight2">│  └─────────┬──────────┘    └─────────────┬─────────────┘    │</span>
+<span class="highlight2">└────────────┼──────────────────────────────┼─────────────────┘</span>
+             ▼                              ▼
+<span class="highlight3">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="highlight3">│         Cognitive Network Analyzer™  (CTS ONA)               │</span>
+<span class="highlight3">│   Active ONA (surveys) + Passive ONA (behavioral signals)    │</span>
+<span class="highlight3">│   Graph DB: nodes = employees, edges = collaboration         │</span>
+<span class="highlight3">└─────────────────────────────────────────────────────────────┘</span>
+    </div>
+    <p style="margin-top:14px;font-size:0.88rem;">Built using CTS's existing <strong>Modular AI Agent Framework</strong> — each module is an independent agent that can be activated, tuned, or replaced without disrupting the other.</p>
+  </section>
+
+  <!-- Privacy -->
+  <section>
+    <div class="section-label">Ethics &amp; Compliance</div>
+    <h2>Privacy &amp; Ethical Design</h2>
+    <div class="card">
+      <p>Given that passive ONA involves behavioral signal collection, three guardrails are essential:</p>
+      <ol class="steps" style="margin-top:12px;">
+        <li><span class="step-num" style="background:#555;">1</span><p><strong>Aggregate-only passive signals</strong> — individual email/meeting data is never exposed; only graph-level scores surface in recommendations</p></li>
+        <li><span class="step-num" style="background:#555;">2</span><p><strong>Explainable recommendations</strong> — every suggestion shows a plain-language reason ("Based on your skills gap in cloud architecture and Maria's expertise flagged in your growth plan")</p></li>
+        <li><span class="step-num" style="background:#555;">3</span><p><strong>Employee opt-out</strong> — employees can opt out of cross-team discovery mode; mentorship matching remains HR-driven</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Business Case -->
+  <section>
+    <div class="section-label">Impact</div>
+    <h2>Business Case</h2>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val">40%</div>
+        <div class="metric-label">Faster time-to-productivity<br/>(existing CTS benchmark)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">20%</div>
+        <div class="metric-label">Attrition reduction<br/>(existing CTS benchmark)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val green">70%+</div>
+        <div class="metric-label">Cross-team project success<br/>(target vs. 54% industry avg)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val green">&lt;30m</div>
+        <div class="metric-label">HR time per mentor cohort<br/>(vs. 4–8 hrs manual today)</div>
+      </div>
+    </div>
+
+    <table style="margin-top:24px;">
+      <thead>
+        <tr><th>Metric</th><th>Benchmark</th><th>SmartMatch Target</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Time-to-productivity</td>
+          <td>40% improvement (CTS data)</td>
+          <td>Extend to full 6-month development track</td>
+        </tr>
+        <tr>
+          <td>Attrition reduction</td>
+          <td>20% (CTS data)</td>
+          <td>Add mentor-mismatch layer (est. 15–25% of mentorships fail in 60d)</td>
+        </tr>
+        <tr>
+          <td>Cross-team project success</td>
+          <td>54% industry average</td>
+          <td>70%+ via pre-seeded network bridges</td>
+        </tr>
+        <tr>
+          <td>HR effort on mentor matching</td>
+          <td>4–8 hrs/cohort (manual)</td>
+          <td>&lt;30 min/cohort (review + approve)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Phased Rollout -->
+  <section>
+    <div class="section-label">Execution</div>
+    <h2>Phased Rollout</h2>
+    <div class="phases">
+      <div class="phase-row">
+        <div class="phase-num">PHASE 1</div>
+        <div class="phase-body">
+          <div class="phase-time">Months 1–3</div>
+          <h4>MentorMatch MVP</h4>
+          <p>Onboarding flow only; HR-approved matching; ServiceNow Employee Journey Management integration</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">PHASE 2</div>
+        <div class="phase-body">
+          <div class="phase-time">Months 4–6</div>
+          <h4>MentorMatch Full</h4>
+          <p>Extend to Growth &amp; Development plans; feedback loop + model retraining on outcome data</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num green">PHASE 3</div>
+        <div class="phase-body">
+          <div class="phase-time">Months 7–9</div>
+          <h4>TeamBridge MVP</h4>
+          <p>Serendipity Mode weekly digest; Employee Center widget; warm intro workflow</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num green">PHASE 4</div>
+        <div class="phase-body">
+          <div class="phase-time">Months 10–12</div>
+          <h4>TeamBridge Full</h4>
+          <p>Targeted Mode; calendar booking integration; M&amp;A / restructuring use case unlock</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why CTS -->
+  <section>
+    <div class="section-label">Competitive Advantage</div>
+    <h2>Why CTS is Uniquely Positioned</h2>
+    <div class="card">
+      <ul class="steps">
+        <li><span class="step-num" style="background:var(--brand-primary);">✦</span><p><strong>ONA data moat</strong> — no competitor has the same network graph fidelity; this is the core input to the recommendation engine</p></li>
+        <li><span class="step-num" style="background:var(--brand-primary);">✦</span><p><strong>ServiceNow certified app</strong> — already in the Store; SmartMatch is an extension, not a new product to sell</p></li>
+        <li><span class="step-num" style="background:var(--brand-primary);">✦</span><p><strong>Modular AI Agent Framework</strong> — patent-pending architecture maps directly to a two-module agent design</p></li>
+        <li><span class="step-num" style="background:var(--brand-primary);">✦</span><p><strong>Enterprise client base</strong> (Medtronic, Coca-Cola, PwC, Thermo Fisher) — ready pilots with measurable baseline data</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section>
+    <div class="section-label">Action Items</div>
+    <h2>Recommended Next Steps</h2>
+    <div class="card">
+      <ul class="next-steps">
+        <li>
+          <span class="ns-icon">🎯</span>
+          <p><strong>Identify a pilot client</strong> from existing base with active ServiceNow + ONA deployment — PwC or Medtronic are strong candidates given their onboarding scale and baseline data</p>
+        </li>
+        <li>
+          <span class="ns-icon">🗄️</span>
+          <p><strong>Define the recommendation model schema</strong> — map ONA graph fields (node attributes, edge weights) to mentor/collaborator scoring dimensions</p>
+        </li>
+        <li>
+          <span class="ns-icon">🖥️</span>
+          <p><strong>Design the HR approval UX</strong> in ServiceNow Employee Center — target a one-screen, three-click approval flow to drive adoption</p>
+        </li>
+        <li>
+          <span class="ns-icon">📊</span>
+          <p><strong>Instrument the feedback loop from day one</strong> — track mentorship outcomes, collaborations initiated, and opt-out rates to enable continuous model improvement</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section>
+    <div class="positioning">
+      <h3>Strategic Positioning</h3>
+      <p>SmartMatch is CTS's natural next product evolution — closing the gap between knowing who should connect and actually making it happen.</p>
+      <div class="from-to">
+        <div class="label">Insight Platform</div>
+        <div class="arrow-icon">→</div>
+        <div class="label">Action Platform</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Confidential · Cognitive Talent Solutions · April 2026 · Built on Cognitive Network Analyzer™ + ONA by CTS &amp; ServiceNow
+</footer>
+
+</body>
+</html>
